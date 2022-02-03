@@ -1,2 +1,2 @@
-# GulosoPCV
-PCV com Algoritmo Guloso
+# GreedyTSP
+Problema do Caixeiro Viajante com Algoritmo Guloso
