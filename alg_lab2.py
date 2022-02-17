@@ -205,11 +205,11 @@ class GreedyTSP(Experimento):
 		self.output = "greedyTSP.txt"
 
 		# configurações de plotagem
-		self.medicao_legenda = "tempo de execução medido"
+		self.medicao_legenda = "GreedyTSP medido"
 		self.medicao_cor_rgb = mapa_escalar.to_rgba(4)
 		self.medicao_formato = formatos[2]
 
-		self.aproximacao_legenda = "execução aproximada"
+		self.aproximacao_legenda = "GreedyTSP aproximado"
 		self.aproximacao_cor_rgb = mapa_escalar.to_rgba(5)
 
 	def executa_aproximacao(self):
@@ -272,7 +272,7 @@ def main():
 	# configurações gerais
 	plt.legend()
 	plt.xticks(range(args.nstart, args.nstop+1, args.nstep))
-	plt.title("Tempo de execução (trials={}, seed={})".format(args.trials, args.seed))
+	plt.title("Tempo de execução (trials={})".format(args.trials, args.seed))
 	plt.xlabel("Tamanho da instância (n)")
 	plt.ylabel("Tempo de execução (s)")
 
