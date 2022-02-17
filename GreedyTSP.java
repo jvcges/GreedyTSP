@@ -6,9 +6,12 @@ public class GreedyTSP {
     static ArrayList<Edge> edges = new ArrayList<Edge>();
     static ArrayList<Edge> tourEdges = new ArrayList<Edge>();
     static double greedyDistance = 0.0;
+		public static long executionTime;
 
-		public static Integer totalDistance(Integer a, Integer b) {
-			return a+b;
+		public static double executionTime(Integer a, Integer b) {
+			GreedyTSP greedy = new GreedyTSP();
+    	greedy.Greedy(a,b);
+			return greedy.executionTime;
 		}
     
     public void Greedy (int node, long seed) {
@@ -43,38 +46,39 @@ public class GreedyTSP {
 	long endTime = System.currentTimeMillis();
 	    
 
-	if (node <= 10) {
-	    System.out.println(g.getVerticesString(g.getVertices()));
+	// if (node <= 10) {
+	//     System.out.println(g.getVerticesString(g.getVertices()));
 	
 
-	    System.out.println("Matriz de distâncias entre nodos:\n\n" + g.getMatrixString() + "\n");
+	//     System.out.println("Matriz de distâncias entre nodos:\n\n" + g.getMatrixString() + "\n");
 	
 
-	    System.out.println("Matriz de distâncias entre nodos após algoritmo guloso:\n");
+	//     System.out.println("Matriz de distâncias entre nodos após algoritmo guloso:\n");
 	    
-	    for (int i = 0; i < greedyMatrix.length; i++) {
-		System.out.print("      " + i);
-	    } 
+	  //   for (int i = 0; i < greedyMatrix.length; i++) {
+		// System.out.print("      " + i);
+	  //   } 
 	    
-	    for (int i = 0; i < greedyMatrix.length; i++) {
-		System.out.print("\n\n" + i + "   ");
-		for (int j = 0; j < greedyMatrix[i].length; j++) {
-		    System.out.print(df.format(greedyMatrix[i][j]) + "   ");
-		}
-	    }
-	    System.out.println("\n");
+	  //   for (int i = 0; i < greedyMatrix.length; i++) {
+		// System.out.print("\n\n" + i + "   ");
+		// for (int j = 0; j < greedyMatrix[i].length; j++) {
+		//     System.out.print(df.format(greedyMatrix[i][j]) + "   ");
+		// }
+	  //   }
+	    //System.out.println("\n");
 	    
-	    for (int i = 0; i < tourEdges.size(); i++) {
-		System.out.println(tourEdges.get(i).toString());
-	    }
-	}
+	  //   for (int i = 0; i < tourEdges.size(); i++) {
+		// System.out.println(tourEdges.get(i).toString());
+	  //   }
+	//}
 	
-	System.out.print("\nDistância total: " + df.format(greedyDistance) + "\nCaminho: " );
-	for (int i = 0; i < visited.size(); i++) {
-	    System.out.print(" " + visited.get(i));
-	}
+	// System.out.print("\nDistância total: " + df.format(greedyDistance) + "\nCaminho: " );
+	// for (int i = 0; i < visited.size(); i++) {
+	//     System.out.print(" " + visited.get(i));
+	// }
 	
-	System.out.println("\nTempo de execução: " + (endTime - startTime) + " milissegundos");
+	executionTime = (endTime - startTime);
+	//System.out.println("\nTempo de execução: " + (endTime - startTime) + " milissegundos");
     }
     
     public static ArrayList<Edge> generateEdges(double[][] matrix) {

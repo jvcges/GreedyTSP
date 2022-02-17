@@ -5,9 +5,7 @@ import jpype.imports
 try:
   pass
   greedyTSP = JClass('GreedyTSP')
-  print(greedyTSP)
-  print(dir(greedyTSP))
-  res = greedyTSP.teste(java.lang.Integer(5), java.lang.Integer(5))
+  res = greedyTSP.executionTime(java.lang.Integer(5), java.lang.Integer(50))
   print(res)
 
 except Exception as err:
