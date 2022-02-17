@@ -6,34 +6,15 @@ public class GreedyTSP {
     static ArrayList<Edge> edges = new ArrayList<Edge>();
     static ArrayList<Edge> tourEdges = new ArrayList<Edge>();
     static double greedyDistance = 0.0;
+
+		public static Integer totalDistance(Integer a, Integer b) {
+			return a+b;
+		}
     
-    public static void main (String[] args) {
-	
-	int n = 0;
-	long seed = 0;
+    public void Greedy (int node, long seed) {
 	DecimalFormat df = new DecimalFormat("0.00");
 	
-	if (args.length != 2) {
-	    System.out.println("Passe os nodes e o seeds como paramêtro, exemplo: java GreedyTSP 5 1000");
-	    System.exit(0);
-	}
-	
-	try {
-	    n = Integer.parseInt(args[0]);
-	    seed = Long.parseLong(args[1]);
-	}
-	
-	catch (NumberFormatException e) {
-	    System.out.println("Número de nodes e seeds devem ser inteiros, exemplo: java GreedyTSP 5 1000");
-	    System.exit(0);
-	}
-	
-	if ((n < 1) || (n > 10)) {
-	    System.out.println("Número de nodos devem ser entre 1 e 10");
-	    System.exit(0);
-	}
-	
-	Graph g = new Graph(n, seed);
+	Graph g = new Graph(node, seed);
 
 	long startTime = System.currentTimeMillis();
 	
@@ -62,7 +43,7 @@ public class GreedyTSP {
 	long endTime = System.currentTimeMillis();
 	    
 
-	if (n <= 10) {
+	if (node <= 10) {
 	    System.out.println(g.getVerticesString(g.getVertices()));
 	
 
