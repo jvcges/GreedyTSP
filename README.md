@@ -2,7 +2,7 @@
 Jdk última versão instalada.
 
 
-**Passos para Rodar o Código(Via Terminal):**
+**Passos para Rodar o Código Java(Via Terminal):**
 
 1. Primeiro passo:
   `javac GreedyTSP.java`
@@ -13,6 +13,14 @@ Jdk última versão instalada.
 2. Após iremos utilizar só o "GreedyTSP", usando agora o comando "java".
 
 3. Exemplo: `java GreedyTSP 5 1000`
+
+**Passos para gerar gráfico(Via Terminal):**
+
+1. Compilar códigos em java (Passo 1 do passo a passo anterior)
+
+2. rodar o comando `python3 alg_lab2.py -n 1000 -e 100` (executa de 1 até 1000 instâncias indo de 100 em 100)
+
+3. Fique a vontade para alterar os parâmetros.
 
 
 
