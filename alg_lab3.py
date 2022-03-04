@@ -11,6 +11,7 @@
 
 
 
+from matplotlib.pyplot import triplot
 from greedyTSP import greedyTSP
 
 
@@ -172,18 +173,7 @@ class ModeloAnalitico(ABC):
 		self.fn_cor_rgb = mapa_escalar.to_rgba(1)
 		#self.fn_formato = formatos[1]
 
-		# configurações de plotagem upper bound g(x)
-		self.gn1_legenda = "g(n)="
-		self.gn1_constante = None
-		self.gn1_cor_rgb = mapa_escalar.to_rgba(3)
-		#self.gn1_formato = formatos[1]
-
-		# configurações de plotagem lower bound g(x)
-		self.gn2_legenda = "g(n)="
-		self.gn2_constante = None
-		self.gn2_cor_rgb = mapa_escalar.to_rgba(5)
-		# self.gn2_formato = formatos[1]
-
+	
 	@abstractmethod
 	def f(self, n):
 		pass
@@ -204,10 +194,7 @@ class ModeloAnalitico(ABC):
 
 	def plota(self):
 		self.plota_fn()
-		if self.gn1_constante is not None:
-			self.plota_gn(self.gn1_constante, self.gn1_legenda, self.gn1_cor_rgb)
-		if self.gn2_constante is not None:
-			self.plota_gn(self.gn2_constante, self.gn2_legenda, self.gn2_cor_rgb)
+		
 
 
 class Exemplo1(ModeloAnalitico):
@@ -218,27 +205,24 @@ class Exemplo1(ModeloAnalitico):
 		self.linestyle = 'solid'
 
 		# configurações de plotagem f(x)
-		self.fn_legenda = "f(n)=3n^2 −100n +6 "
+		self.fn_legenda = "GreedyTSP(n)"
 
-		# configurações de plotagem upper bound g(x)
-		if args.constante1 is None:
-			self.gn1_constante = 3
-		else:
-			self.gn1_constante = args.constante1
-		self.gn1_legenda = "g(n)=n^2, c=%d"%self.gn1_constante
 
-		# configurações de plotagem lower bound g(x)
-		if args.constante2 is None:
-			self.gn2_constante = 1
-		else:
-			self.gn2_constante = args.constante2
-		self.gn2_legenda = "g(n)=n^2, c=%d" % self.gn2_constante
 
+	
+
+	
 	def f(self, n):
-		return greedyTSP(n)
-
+		tempo_inicio = timeit.default_timer()
+		greedyTSP(n)
+		tempo_fim = timeit.default_timer()
+		return tempo_fim - tempo_inicio
 	def g(self, n, c):
-		return greedyTSP(n)
+		tempo_inicio = timeit.default_timer()
+		greedyTSP(n)
+		tempo_fim = timeit.default_timer()
+		return tempo_fim - tempo_inicio
+
 
 
 class Exemplo2(ModeloAnalitico):
@@ -249,24 +233,21 @@ class Exemplo2(ModeloAnalitico):
 		self.linestyle = 'dotted'
 
 		# configurações de plotagem f(x)
-		self.fn_legenda = "f(n)=3n^2 −100n +6"
+		self.fn_legenda = "GreedyTSP(n2)"
 
-		# configurações de plotagem upper bound g(x)
-		if args.constante1 is None:
-			self.gn1_constante = 1
-		else:
-			self.gn1_constante = args.constante1
-
-		self.gn1_legenda = "g(n)=n^3, c=%d"%self.gn1_constante
+		
+		self.gn1_legenda = "GreedyTSP(n2)"
 
 	def f(self, n):
+		dobro = 2*n
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(n)
+		greedyTSP(dobro)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 	def g(self, n, c):
+		dobro = 2*n
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(n)
+		greedyTSP(dobro)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 
@@ -278,24 +259,20 @@ class Exemplo3(ModeloAnalitico):
 		self.linestyle = 'dashed'
 
 		# configurações de plotagem f(x)
-		self.fn_legenda = "f(n)=3n^2 −100n +6"
+		self.fn_legenda = "GreedyTSP(n3)"
 
-		# configurações de plotagem upper bound g(x)
-		if args.constante1 is None:
-			self.gn1_constante = 1
-		else:
-			self.gn1_constante = args.constante1
-
-		self.gn1_legenda = "g(n)=n, c=%d"%self.gn1_constante
+		self.gn1_legenda = "GreedyTSP(n3)"
 
 	def f(self, n):
+		triplot = 3*n
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(n)
+		greedyTSP(triplot)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 	def g(self, n, c):
+		triplot = 3*n
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(n)
+		greedyTSP(triplot)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 
