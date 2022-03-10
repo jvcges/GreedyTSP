@@ -10,7 +10,7 @@ DEFAULT_N_STEP = 1
 DEFAULT_TRIALS = 3
 
 from jpype import startJVM, shutdownJVM, java, addClassPath, JClass, JInt
-startJVM(convertStrings=False)
+#startJVM(convertStrings=False)
 import jpype.imports
 
 from subprocess import Popen, PIPE
@@ -34,10 +34,10 @@ import matplotlib.cm as cmx
 import timeit
 
 
-def greedyTSP(arr):
+def greedyTSP(arr, seed):
 			pass
 			greedyTSP = JClass('GreedyTSP')
-			greedyTSP.executionTime(java.lang.Integer(arr), java.lang.Integer(5000))
+			greedyTSP.executionTime(java.lang.Integer(arr), java.lang.Integer(seed))
 
 def main():
 	# Definição de argumentos

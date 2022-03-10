@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Rodrigo Mansilha
-# Universidade Federal do Pampa (Unipampa)
-# Programa de Pós-Graduação em Eng. de Software (PPGES)
-# Bacharelado em: Ciência da Camputação, Eng. de Software, Eng. de Telecomunicações
 
 # Algoritmos
 # Laboratório 3: avaliação analítica
@@ -12,6 +8,7 @@
 
 
 from matplotlib.pyplot import triplot
+from MstTSP import mstTSP
 from greedyTSP import greedyTSP
 
 
@@ -205,21 +202,16 @@ class Exemplo1(ModeloAnalitico):
 		self.linestyle = 'solid'
 
 		# configurações de plotagem f(x)
-		self.fn_legenda = "GreedyTSP(n)"
+		self.fn_legenda = "GreedyTSP"
 
-
-
-	
-
-	
 	def f(self, n):
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(n)
+		greedyTSP(n, 5000)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 	def g(self, n, c):
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(n)
+		greedyTSP(n, 5000)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 
@@ -233,48 +225,46 @@ class Exemplo2(ModeloAnalitico):
 		self.linestyle = 'dotted'
 
 		# configurações de plotagem f(x)
-		self.fn_legenda = "GreedyTSP(n2)"
+		self.fn_legenda = "MstTSP"
 
 		
-		self.gn1_legenda = "GreedyTSP(n2)"
+		self.gn1_legenda = "MstTSP"
 
 	def f(self, n):
-		dobro = 2*n
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(dobro)
+		mstTSP(n, 5000)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 	def g(self, n, c):
-		dobro = 2*n
 		tempo_inicio = timeit.default_timer()
-		greedyTSP(dobro)
+		mstTSP(n, 5000)
 		tempo_fim = timeit.default_timer()
 		return tempo_fim - tempo_inicio
 
-class Exemplo3(ModeloAnalitico):
+# class Exemplo3(ModeloAnalitico):
 
-	def __init__(self, args):
-		super().__init__(args)
-		self.id = "3"
-		self.linestyle = 'dashed'
+# 	def __init__(self, args):
+# 		super().__init__(args)
+# 		self.id = "3"
+# 		self.linestyle = 'dashed'
 
-		# configurações de plotagem f(x)
-		self.fn_legenda = "GreedyTSP(n3)"
+# 		# configurações de plotagem f(x)
+# 		self.fn_legenda = "GreedyTSP(n3)"
 
-		self.gn1_legenda = "GreedyTSP(n3)"
+# 		self.gn1_legenda = "GreedyTSP(n3)"
 
-	def f(self, n):
-		triplot = 3*n
-		tempo_inicio = timeit.default_timer()
-		greedyTSP(triplot)
-		tempo_fim = timeit.default_timer()
-		return tempo_fim - tempo_inicio
-	def g(self, n, c):
-		triplot = 3*n
-		tempo_inicio = timeit.default_timer()
-		greedyTSP(triplot)
-		tempo_fim = timeit.default_timer()
-		return tempo_fim - tempo_inicio
+# 	def f(self, n):
+# 		triplot = 3*n
+# 		tempo_inicio = timeit.default_timer()
+# 		greedyTSP(n, 5000)
+# 		tempo_fim = timeit.default_timer()
+# 		return tempo_fim - tempo_inicio
+# 	def g(self, n, c):
+# 		triplot = 3*n
+# 		tempo_inicio = timeit.default_timer()
+# 		greedyTSP(n, 5000)
+# 		tempo_fim = timeit.default_timer()
+# 		return tempo_fim - tempo_inicio
 
 
 def main():
@@ -327,7 +317,7 @@ def main():
 	imprime_config(args)
 
 	# lista de exemplos disponíveis
-	exemplos = [Exemplo1(args), Exemplo2(args), Exemplo3(args)]
+	exemplos = [Exemplo1(args), Exemplo2(args)]
 
 	for m in exemplos:
 		if args.exemplos is None or m.id in args.exemplos:

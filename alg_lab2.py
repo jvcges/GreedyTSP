@@ -1,11 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Rodrigo Mansilha
-# Universidade Federal do Pampa (Unipampa)
-# Programa de Pós-Graduação em Eng. de Software (PPGES)
-# Bacharelado em: Ciência da Camputação, Eng. de Software, Eng. de Telecomunicações
-
 # Algoritmos
 # Laboratório 2: avaliação experimental
 
